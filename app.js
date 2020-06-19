@@ -36,39 +36,39 @@ const upload = multer({
               
               })
 const fs= require('fs')
-const knex = require('knex')({
-    client: 'pg',
-    version: '7.2',
-    connection: {
-      host :'localhost',
-      user : 'postgres',
-      password :'test',
-      database :'medica'
-    }
-  });
+// const knex = require('knex')({
+//     client: 'pg',
+//     version: '7.2',
+//     connection: {
+//       host :'localhost',
+//       user : 'postgres',
+//       password :'test',
+//       database :'medica'
+//     }
+//   });
 
 
-  knex.schema.hasTable('users').then(function(exists) {
-    if (!exists) {
-      return knex.schema.createTable('users', function(t) {
-        t.increments('id').primary();
-        t.string('email', 50);
-        t.string('password',255);
+  // knex.schema.hasTable('users').then(function(exists) {
+  //   if (!exists) {
+  //     return knex.schema.createTable('users', function(t) {
+  //       t.increments('id').primary();
+  //       t.string('email', 50);
+  //       t.string('password',255);
        
-      });
-    }
-  });
+  //     });
+  //   }
+  // });
 
-  knex.schema.hasTable('register').then(function(exists) {
-    if (!exists) {
-      return knex.schema.createTable('register', function(t) {
-        t.increments('id').primary();
-        t.string('username', 30);
-        t.string('email', 50);
-        t.timestamp('joined').defaultTo(knex.fn.now());
-      });
-    }
-  });
+  // knex.schema.hasTable('register').then(function(exists) {
+  //   if (!exists) {
+  //     return knex.schema.createTable('register', function(t) {
+  //       t.increments('id').primary();
+  //       t.string('username', 30);
+  //       t.string('email', 50);
+  //       t.timestamp('joined').defaultTo(knex.fn.now());
+  //     });
+  //   }
+  // });
 
 
 
@@ -81,16 +81,16 @@ app.use(morgan('dev'));
 
 
 
-const Users= require('./Routes/Users')
+// const Users= require('./Routes/Users')
 
 
 app.get('/',(req,res)=>{
     res.send('ok')
 })
 
-app.get('/Users',(req,res)=>{Users.UsersGet(req,res,bcrypt)})
-app.post('/Users',(req,res)=>{Users.UsersPost(req,res,bcrypt,knex)})
-app.post('/Users/Upload',upload.single('img'),(req,res)=>{Users.UserUpload(req,res,multer)})
+// app.get('/Users',(req,res)=>{Users.UsersGet(req,res,bcrypt)})
+// app.post('/Users',(req,res)=>{Users.UsersPost(req,res,bcrypt,knex)})
+// app.post('/Users/Upload',upload.single('img'),(req,res)=>{Users.UserUpload(req,res,multer)})
 
 app.listen(4000,()=>{
     console.log('app is running on port 4000')
