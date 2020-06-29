@@ -1,5 +1,4 @@
 node_modules
 upload
-
+.env
 yarn-error.log 
-yarn.lock

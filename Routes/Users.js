@@ -1,4 +1,14 @@
 const joi = require('@hapi/joi')
+const mongoose = require('mongoose')
+/////////////////mongoDb.................
+
+mongoose.connect('mongodb://localhost/my_database', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
+
+///////////Joi........................
 
 const schema = joi.object({
   username:joi.string().min(6).max(30).required(),
@@ -54,7 +64,7 @@ const UsersPost = (req,res,bcrypt,knex)=>{
  const UserUpload = (req,res,multer) => {
   
     console.log(req.file)
-    res.send('sending....')
+    
  }
 
 module.exports={
